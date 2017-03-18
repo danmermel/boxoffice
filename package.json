@@ -1,0 +1,27 @@
+{
+  "name": "boxoffice",
+  "version": "1.0.0",
+  "description": "Box Office app",
+  "main": "boxoffice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danmermel/boxoffice.git"
+  },
+  "keywords": [
+    "box",
+    "office"
+  ],
+  "author": "D Mermelstein",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/danmermel/boxoffice/issues"
+  },
+  "homepage": "https://github.com/danmermel/boxoffice#readme",
+  "dependencies": {
+    "silverlining": "^1.21.0",
+    "web3": "^0.18.2"
+  }
+}
