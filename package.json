@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/danmermel/boxoffice#readme",
   "dependencies": {
+    "async": "^2.1.5",
     "silverlining": "^1.21.0",
     "web3": "^0.18.2"
   }
