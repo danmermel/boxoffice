@@ -120,22 +120,25 @@ events.watch(function(error, event) {
 //"transactionHash":"0x0000000000000000000000000000000000000000000000000000000000000000",
 //"blockHash":null,"logIndex":0,"removed":false,"event":"Log_seat_created","args":{"seat_address":"0x6593923764ff52643f3d9ec194749564c90dc8a7"}}
 
-  if (event.event === 'Log_seat_redeemed') {
-    console.log('marking seat as redeemed');
-    db.get(event.args.seat_address).then(function(doc) {
-      doc.last_event = event.event;
-      doc.redeemed_by_event_owner = true;
-      doc.redeemed_by_seat_owner = true;
-      doc.status = 2;
-      return db.update(doc);  
-    });
-  } else {
-    extractSeat(event.args.seat_address, function(err, data) {
-      console.log('seat', event.args.seat_address, data);
-      data._id = event.args.seat_address;
-      data.last_event = event.event;
-      db.update(data);
-    });
+  if(!error && event) {
+
+    if (event.event === 'Log_seat_redeemed') {
+      console.log('marking seat as redeemed');
+      db.get(event.args.seat_address).then(function(doc) {
+        doc.last_event = event.event;
+        doc.redeemed_by_event_owner = true;
+        doc.redeemed_by_seat_owner = true;
+        doc.status = 2;
+        return db.update(doc);  
+      });
+    } else {
+      extractSeat(event.args.seat_address, function(err, data) {
+        console.log('seat', event.args.seat_address, data);
+        data._id = event.args.seat_address;
+        data.last_event = event.event;
+        db.update(data);
+      });
+    }
   }
 });
 
